@@ -2,11 +2,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import charactersSlice from "./slice/charactersSlice";
 import themeSlice from "./slice/themeSlice";
+import paginationSlice from "./slice/paginationSlice";
 
 export const store = configureStore({
     reducer: {
         characters: charactersSlice,
         theme: themeSlice,
+        pagination: paginationSlice,
     },
     devTools: process.env.NODE_ENV !== "production",
 

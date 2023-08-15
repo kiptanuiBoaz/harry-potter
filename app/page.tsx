@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { SET_CHARACTERS } from '@/redux/slice/charactersSlice';
 import { Spinner } from './components/Spinner';
 import Search from './components/Search';
+import { Pagination } from './components/Pagination';
 
 const CHARACTERS_ROUTE = "/characters"
 
@@ -37,6 +38,7 @@ export default function Home() {
       <h1>This is tha app section</h1>
       <Search/>
       <CharactersTable />
+      <Pagination />
     </main>
 
   )

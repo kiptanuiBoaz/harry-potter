@@ -17,6 +17,21 @@ type AllFilterdCharactersType = {
 interface ThemeInterface {
     theme: string;
 }
+interface PagenationInterface {
+    page: any,
+    limit: number,
+}
+
+interface PaginationStateInterface {
+    pagination: PagenationInterface
+}
+interface PaginationPayloadInterface {
+    page: number | string,
+}
+
+interface ItemsPerPagePayloadInterface {
+    limit: number,
+}
 interface CharacterProps {
     params: { id: string }
 }
