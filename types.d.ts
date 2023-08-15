@@ -10,6 +10,9 @@ interface FilterPayload {
 type AllCharactersType = {
     characters: HarryPotterCharacter[];
 };
+type AllFilterdCharactersType = {
+    filteredCharacters: HarryPotterCharacter[];
+};
 
 interface CharacterProps {
     params: { id: string }

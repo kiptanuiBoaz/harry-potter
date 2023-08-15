@@ -1,4 +1,4 @@
-import { selectCharacters } from '@/redux/slice/charactersSlice';
+import { selectFilterdCharacters } from '@/redux/slice/charactersSlice';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 
 export const CharactersTable: React.FC = () => {
   //characters from redux store
-  const characters: HarryPotterCharacter[] = useSelector(selectCharacters);
+  const characters: HarryPotterCharacter[] = useSelector(selectFilterdCharacters);
 
 
   return (

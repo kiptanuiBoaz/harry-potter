@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import { api } from '@/axios/axios';
 import { useDispatch } from 'react-redux';
 import { SET_CHARACTERS } from '@/redux/slice/charactersSlice';
+import { Spinner } from './components/Spinner';
+import Search from './components/Search';
 
 const CHARACTERS_ROUTE = "/characters"
 
@@ -29,10 +31,11 @@ export default function Home() {
 
   }, [dispatch]);
 
-  return (
+  return isLoading ?<Spinner/>:(
 
     <main className="bg-gray-200 min-h-screen flex flex-col justify-center items-center">
       <h1>This is tha app section</h1>
+      <Search/>
       <CharactersTable />
     </main>
 

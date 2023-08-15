@@ -1,5 +1,7 @@
 "use client"
+import { Spinner } from "@/app/components/Spinner";
 import { api } from "@/axios/axios";
+import { Loading } from "notiflix";
 import { useEffect, useState } from "react";
 
 const CHARACTER_ROUTE = "/character"
@@ -28,9 +30,9 @@ const Character: React.FC<CharacterProps> = ({ params }) => {
 
   }, []);
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Spinner/>
   }
-
+Loading.remove();
   if (!character) {
     return <div>Character not found</div>;
   }
