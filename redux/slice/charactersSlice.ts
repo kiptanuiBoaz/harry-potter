@@ -19,7 +19,7 @@ const charactersSlice = createSlice({
 
             );
         },
-        SET_CHARACTERS: (state,action)=>{
+        SET_CHARACTERS: (state, action) => {
             state.characters = action.payload
         }
 
@@ -27,6 +27,6 @@ const charactersSlice = createSlice({
 });
 
 
-export const { SET_CHARACTERS} = charactersSlice.actions;
-export const selectCharacters = (state:{characters:HarryPotterCharacter})=>state.characters
+export const { SET_CHARACTERS } = charactersSlice.actions;
+export const selectCharacters = (state: { characters: AllCharactersType }) => state.characters.characters
 export default charactersSlice.reducer;

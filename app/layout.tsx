@@ -9,7 +9,7 @@ import { store } from '@/redux/store';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export const metadata = {
+export const metadata :Metadata = {
   title: 'Harry Potter',
   description: 'Charcters from the Harry Potter Series',
 }

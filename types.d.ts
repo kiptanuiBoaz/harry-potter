@@ -1,17 +1,17 @@
 interface Character {
     name: string;
     dateOfBirth: string;
-}
-
-interface FilterPayload{
-    search:string;
-}
-
-interface AllCharactersType {
-    characters:HarryPotterCharacter
-}[]
-
-type HarryPotterCharacter = {
+  }
+  
+  interface FilterPayload {
+    search: string;
+  }
+  
+  type AllCharactersType = {
+    characters: HarryPotterCharacter[];
+  };
+  
+  type HarryPotterCharacter = {
     id: number;
     name: string;
     species: string;
