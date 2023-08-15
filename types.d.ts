@@ -1,17 +1,21 @@
 interface Character {
     name: string;
     dateOfBirth: string;
-  }
-  
-  interface FilterPayload {
+}
+
+interface FilterPayload {
     search: string;
-  }
-  
-  type AllCharactersType = {
+}
+
+type AllCharactersType = {
     characters: HarryPotterCharacter[];
-  };
-  
-  type HarryPotterCharacter = {
+};
+
+interface CharacterProps {
+    params: { id: string }
+}
+
+type HarryPotterCharacter = {
     id: number;
     name: string;
     species: string;
@@ -23,9 +27,9 @@ interface Character {
     eyeColour: string;
     hairColour: string;
     wand: {
-      wood: string;
-      core: string;
-      length: number;
+        wood: string;
+        core: string;
+        length: number;
     };
     patronus: string;
     hogwartsStudent: boolean;
@@ -33,5 +37,4 @@ interface Character {
     actor: string;
     alive: boolean;
     image: string;
-  };
-  
+};
