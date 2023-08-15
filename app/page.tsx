@@ -1,7 +1,45 @@
-import Image from 'next/image'
+"use client"
+import { CharactersTable } from './components/CharactersTable'
+import { useEffect, useState } from 'react'
+import { api } from '@/axios/axios';
+import { useDispatch } from 'react-redux';
+import { SET_CHARACTERS } from '@/redux/slice/charactersSlice';
+import { Spinner } from './components/Spinner';
+import Search from './components/Search';
+import { Pagination } from './components/Pagination';
+
+const CHARACTERS_ROUTE = "/characters"
 
 export default function Home() {
-  return (
-    <main><h1>This is tha app section</h1></main>
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    //get all posts from API
+    const fetchPosts = async () => {
+      setIsLoading(true);
+      try {
+        const res = await api.get(CHARACTERS_ROUTE);
+        dispatch(SET_CHARACTERS(res.data))
+        // console.log(res)
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+        setIsLoading(false);
+      }
+    };
+    fetchPosts();
+
+  }, [dispatch]);
+
+  return isLoading ?<Spinner/>:(
+
+    <main className="bg-gray-200 min-h-screen flex flex-col justify-center items-center">
+      <h1>This is tha app section</h1>
+      <Search/>
+      <CharactersTable />
+      <Pagination />
+    </main>
+
   )
 }
