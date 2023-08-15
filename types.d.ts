@@ -14,6 +14,9 @@ type AllFilterdCharactersType = {
     filteredCharacters: HarryPotterCharacter[];
 };
 
+interface ThemeInterface {
+    theme: string;
+}
 interface CharacterProps {
     params: { id: string }
 }

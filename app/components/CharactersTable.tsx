@@ -7,10 +7,10 @@ import { useSelector } from 'react-redux';
 
 export const CharactersTable: React.FC = () => {
   //characters from redux store
-  const characters: HarryPotterCharacter[] = useSelector(selectFilterdCharacters);
+  const filteredCharacters: HarryPotterCharacter[] = useSelector(selectFilterdCharacters);
 
 
-  return (
+  return (filteredCharacters.length ===0 ? <p>No characters found</p>:
     <div className="max-w-md mx-auto">
       <div className="overflow-x-auto">
         <table className="min-w-full table-auto">
@@ -21,7 +21,7 @@ export const CharactersTable: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {characters.map(({ dateOfBirth, name, id }: HarryPotterCharacter, index: number) => (
+            {filteredCharacters.map(({ dateOfBirth, name, id }: HarryPotterCharacter, index: number) => (
               <tr key={index} className={`${index % 2 === 0 ? 'bg-gray-100' : ''} hover:bg-gray-300`}>
                 <td
 
