@@ -1,3 +1,4 @@
+"use client"
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -18,14 +19,14 @@ const charactersSlice = createSlice({
 
             );
         },
-        SET_CHARACTERES: (state,action)=>{
-            state.characters = actions.payload
+        SET_CHARACTERS: (state,action)=>{
+            state.characters = action.payload
         }
 
     }
 });
 
 
-export const {FILTER_CHARACTERS} = charactersSlice.actions;
+export const { SET_CHARACTERS} = charactersSlice.actions;
 export const selectCharacters = (state:{characters:HarryPotterCharacter})=>state.characters
 export default charactersSlice.reducer;

@@ -2,21 +2,24 @@
 import { CharactersTable } from './components/CharactersTable'
 import { useEffect, useState } from 'react'
 import { api } from '@/axios/axios';
-import {Provider} from 'react-redux';
-import store from "@/redux/store";
+import { useDispatch } from 'react-redux';
+import { SET_CHARACTERS } from '@/redux/slice/charactersSlice';
+
 const CHARACTERS_ROUTE = "/characters"
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     //get all posts from API
     const fetchPosts = async () => {
       setIsLoading(true);
       try {
-        const allCharacters = await  api.get(CHARACTERS_ROUTE);
+        const res = await api.get(CHARACTERS_ROUTE);
+        dispatch(SET_CHARACTERS(res.data))
         // setAllJokes(jokes.data)
-        console.log(allCharacters.data)
+        console.log(res)
         setIsLoading(false);
       } catch (error) {
         console.log(error);
@@ -25,9 +28,9 @@ export default function Home() {
     };
     fetchPosts();
 
-  }, []);
-  
- const characters = [
+  }, [dispatch]);
+
+  const characters = [
     {
       "name": "John Doe",
       "dob": "1990-05-15"
@@ -49,13 +52,13 @@ export default function Home() {
       "dob": "1977-01-05"
     }
   ]
-  
+
   return (
-    <Provider store={store}>
+
     <main className="bg-gray-200 min-h-screen flex justify-center items-center">
       <h1>This is tha app section</h1>
-      <CharactersTable characters={characters}/>
-      </main>
-      </Provider>
+      <CharactersTable characters={characters} />
+    </main>
+
   )
 }
