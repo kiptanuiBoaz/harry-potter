@@ -21,42 +21,51 @@ export const Pagination: React.FC = () => {
     //page numbers to display
     const pageNumbers = Array.from({ length: pagesToShow }, (_, index) => currentPage - 1 + index);
     return (
-        <div className="pagination">
-            {totalCharacters > limit && <ItemsPerPage />}
-            {currentPage > 1 &&
+        <div className="pagination flex items-center justify-center space-x-5 m-5">
+
+        {totalCharacters > limit && <ItemsPerPage />}
+      
+        {currentPage > 1 && (
+          <button
+            className="pagination-button text-sm md:text-base lg:text-sm"
+            disabled={currentPage === 1}
+            onClick={() => dispatch(NAVIGATE_PAGE({ page: "prev" }))}
+          >
+            <GrPrevious /> Back
+          </button>
+        )}
+      
+        <div className="page-numbers flex items-center">
+          {pageNumbers.map(
+            (pageNumber) =>
+              pageNumber > 0 &&
+              totalPages - 1 > currentPage && (
                 <button
-                    className="pagination-button"
-                    disabled={currentPage === 1}
-                    onClick={() => dispatch(NAVIGATE_PAGE({ page: "prev" }))}
+                  key={pageNumber}
+                  className={`page-number ${
+                    pageNumber === currentPage ? 'active' : ''
+                  } text-xs md:text-sm lg:text-base`}
+                  onClick={() => dispatch(NAVIGATE_PAGE({ page: pageNumber }))}
                 >
-                  < GrPrevious/>{" "}&nbsp; Back
+                  {pageNumber}
                 </button>
-            }
-            <div className="page-numbers">
-                {pageNumbers.map((pageNumber) => (
-                    pageNumber > 0 && totalPages - 1 > currentPage &&
-                    <button
-                        key={pageNumber}
-                        className={`page-number ${pageNumber === currentPage ? 'active' : ''}`}
-                        onClick={() => dispatch(NAVIGATE_PAGE({ page: pageNumber }))}
-                    >
-                        {pageNumber}
-                    </button>
-                ))}
-            </div>
-
-            {totalPages - 1 > currentPage &&
-                <button
-                    className="pagination-button"
-                    disabled={currentPage === totalPages}
-                    onClick={() => dispatch(NAVIGATE_PAGE({ page: "next" }))}
-                >
-                    Next{" "}&nbsp; <GrNext />
-                </button>
-            }
-
-
-        </div >
+              )
+          )}
+        </div>
+      
+        {totalPages - 1 > currentPage && (
+          <button
+            className="pagination-button text-sm md:text-base lg:text-sm"
+            disabled={currentPage === totalPages}
+            onClick={() => dispatch(NAVIGATE_PAGE({ page: "next" }))}
+          >
+            Next <GrNext className="font-#fff" />
+          </button>
+        )}
+      
+      </div>
+      
+      
     );
 };
 

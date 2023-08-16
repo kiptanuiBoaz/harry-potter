@@ -30,7 +30,7 @@ export const CharactersTable: React.FC = () => {
               <tr key={index} className={`${index % 2 === 0 ? 'bg-gray-100' : ''} hover:bg-gray-300`}>
                 <td
 
-                  className="border px-2 sm:px-4 py-1 sm:py-3 text-sm sm:text-base leading-5"
+                  className="border hover:underline px-2 sm:px-4 py-1 sm:py-3 text-sm sm:text-base leading-5"
                 >
                   <Link href={`character/${id}`}>{name}</Link>
                 </td>

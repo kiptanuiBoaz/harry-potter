@@ -53,7 +53,10 @@ const Character: React.FC<CharacterProps> = ({ params }) => {
     }));
 
 
-  return isLoading ?  <Spinner />: character && <InfoTable character={character} characterInfoArray={characterInfoArray} />
+  return isLoading
+    ? <Spinner />
+    : character
+    && <InfoTable character={character} characterInfoArray={characterInfoArray} />
 
 }
 
