@@ -16,7 +16,8 @@ const charactersSlice = createSlice({
             state.filteredCharacters = state.characters.filter(
                 (character: HarryPotterCharacter) =>
                     character.name.toLowerCase().includes(search.toLowerCase()) ||
-                    character.actor.toLowerCase().includes(search.toLowerCase())
+                    character.actor.toLowerCase().includes(search.toLowerCase()) ||
+                    character.house.toLowerCase().includes(search.toLowerCase())
 
             );
         },

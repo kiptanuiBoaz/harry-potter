@@ -1,9 +1,10 @@
 import React from 'react';
-import   './pagination.scss';
+import './pagination.scss';
 import { useSelector, useDispatch } from "react-redux";
 import { NAVIGATE_PAGE, selectPagination } from '@/redux/slice/paginationSlice';
 import { ItemsPerPage } from './ItemsPerPage';
 import { selectFilterdCharacters } from '@/redux/slice/charactersSlice';
+import {GrNext,GrPrevious} from "react-icons/gr";
 
 
 
@@ -12,7 +13,7 @@ export const Pagination: React.FC = () => {
     const pagesToShow = 3;
     const totalCharacters = useSelector(selectFilterdCharacters).length;
     // pagination state from redux store
-    const  { limit, page: currentPage  } = useSelector(selectPagination);
+    const { limit, page: currentPage } = useSelector(selectPagination);
 
     const dispatch = useDispatch();
 
@@ -21,14 +22,14 @@ export const Pagination: React.FC = () => {
     const pageNumbers = Array.from({ length: pagesToShow }, (_, index) => currentPage - 1 + index);
     return (
         <div className="pagination">
-            <ItemsPerPage />
+            {totalCharacters > limit && <ItemsPerPage />}
             {currentPage > 1 &&
                 <button
                     className="pagination-button"
                     disabled={currentPage === 1}
                     onClick={() => dispatch(NAVIGATE_PAGE({ page: "prev" }))}
                 >
-                    &lt; Back
+                  < GrPrevious/>{" "}&nbsp; Back
                 </button>
             }
             <div className="page-numbers">
@@ -50,11 +51,11 @@ export const Pagination: React.FC = () => {
                     disabled={currentPage === totalPages}
                     onClick={() => dispatch(NAVIGATE_PAGE({ page: "next" }))}
                 >
-                    Next &gt;
+                    Next{" "}&nbsp; <GrNext />
                 </button>
             }
 
-           
+
         </div >
     );
 };

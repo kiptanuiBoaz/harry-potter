@@ -15,7 +15,7 @@ export const CharactersTable: React.FC = () => {
   const to = from + limit;
 
   return (filteredCharacters.length ===0 ? <p>No characters found</p>:
-    <div className="max-w-md mx-auto">
+    <section className="max-w-md mx-auto">
       <div className="overflow-x-auto">
         <table className="min-w-full table-auto">
           <thead>
@@ -45,7 +45,7 @@ export const CharactersTable: React.FC = () => {
           </tbody>
         </table>
       </div>
-    </div>
+    </section>
 
 
   );

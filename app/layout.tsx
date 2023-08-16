@@ -9,7 +9,7 @@ import { store } from '@/redux/store';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export const metadata :Metadata = {
+export const metadata: Metadata = {
   title: 'Harry Potter',
   description: 'Charcters from the Harry Potter Series',
 }
@@ -21,9 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-      <Provider store={store}>{children}</Provider>
-       </body>
+      <body className={inter.className}>
+        <Provider store={store}>{children}</Provider>
+      </body>
     </html>
   )
 }

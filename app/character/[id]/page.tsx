@@ -3,12 +3,16 @@ import { Spinner } from "@/app/components/Spinner";
 import { api } from "@/axios/axios";
 import { Loading } from "notiflix";
 import { useEffect, useState } from "react";
+import { InfoTable } from "./components/InfoTable";
+
 
 const CHARACTER_ROUTE = "/character"
 
 const Character: React.FC<CharacterProps> = ({ params }) => {
   const [isLoading, setIsLoading] = useState<boolean>();
   const [character, setCharacter] = useState<HarryPotterCharacter>();
+
+  //character Id from  character id
   const id: string = params.id;
 
 
@@ -29,51 +33,28 @@ const Character: React.FC<CharacterProps> = ({ params }) => {
     fetchPosts();
 
   }, []);
+
+
   if (isLoading) {
-    return <Spinner/>
+    return <Spinner />
   }
-Loading.remove();
+
   if (!character) {
     return <div>Character not found</div>;
   }
-const {species,name,gender,house,dateOfBirth,yearOfBirth,ancestry,eyeColour,hairColour,wand} = character;
-  
-  return  character &&  <section className="max-w-md mx-auto p-4 bg-white rounded-lg shadow-lg">
-      <h2 className="text-2xl font-semibold mb-4">{name}</h2>
-      <p className="mb-2">
-        <span className="font-bold">Species:</span> {species}
-      </p>
-      <p className="mb-2">
-        <span className="font-bold">Gender:</span> {gender}
-      </p>
-      <p className="mb-2">
-        <span className="font-bold">House:</span> {house}
-      </p>
-      <p className="mb-2">
-        <span className="font-bold">Date of Birth:</span> {dateOfBirth}
-      </p>
-      <p className="mb-2">
-        <span className="font-bold">Year of Birth:</span> {yearOfBirth}
-      </p>
-      <p className="mb-2">
-        <span className="font-bold">Ancestry:</span> {ancestry}
-      </p>
-      <p className="mb-2">
-        <span className="font-bold">Eye Colour:</span> {eyeColour}
-      </p>
-      <p className="mb-2">
-        <span className="font-bold">Hair Colour:</span> {hairColour}
-      </p>
-      <div className="mb-2">
-        <span className="font-bold">Wand:</span>
-        <ul>
-          <li>Wood: {wand.wood}</li>
-          <li>Core: {wand.core}</li>
-          <li>Length: {wand.length}</li>
-        </ul>
-      </div>
-    
-    </section>
+
+
+  // Converting the HarryPotterCharacter object into an array of key-value pairs
+  const characterInfoArray = Object.entries(character)
+    .filter(([key]) => key !== 'name' && key !== 'image' && key !== 'wand' && key !== "alternate_names" && key !== "id")
+    .map(([key, value]) => ({
+      key: key,
+      value: value
+    }));
+
+
+  return isLoading ?  <Spinner />: character && <InfoTable character={character} characterInfoArray={characterInfoArray} />
+
 }
 
 export default Character;
