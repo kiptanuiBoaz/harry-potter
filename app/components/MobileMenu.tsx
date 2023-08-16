@@ -1,35 +1,33 @@
 import Cookies from 'js-cookie';
 import { useDispatch } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { UPDATE_EDITING_ID } from '../../redux/jokeSlice';
-import { ActionBtn, DangerBtn, Theme } from '..';
 import "./mobile-menu.scss";
+import { useRouter } from 'next/router';
+import { Theme } from './Theme';
+import { ActionBtn } from './ActionBtn';
+import { DangerBtn } from './DangerBtn';
 
 export const MobileMenu = () => {
-    const navigate = useNavigate();
+    const router = useRouter();
     const dispatch = useDispatch();
 
     const logOut = () => {
         Cookies.remove(token);
-        navigate("/login");
+        router.push("/login");
     }
 
-    const token = import.meta.env.VITE_COOKIE_TOKEN;
+    const token = process.env.COOKIE_TOKEN;
 
-    //curent route
-    const location = useLocation();
 
 
     //handle click event
     const handleClick = () => {
-        dispatch(UPDATE_EDITING_ID("add"))
-        navigate(location.pathname === "/edit" ? "/" : "/edit");
+        router.push(router.pathname === "/edit" ? "/" : "/edit");
     }
 
     return (
         <div className='menu-items'>
             <Theme />
-            <ActionBtn clickHandler={handleClick}>  {location.pathname !== "/edit" ? "Add New Joke" : "Back to Jokes"}</ActionBtn>
+            <ActionBtn clickHandler={handleClick}>  {router.pathname !== "/edit" ? "Add New Joke" : "Back to Jokes"}</ActionBtn>
             <DangerBtn clickHandler={logOut}>Logout</DangerBtn>
         </div>
     )

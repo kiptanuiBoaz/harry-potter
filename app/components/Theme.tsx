@@ -2,7 +2,8 @@ import { BsMoonStarsFill, BsFillSunFill } from "react-icons/bs";
 import "./theme.css";
 import { useEffect,useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { TOGGLE_THEME, selectTheme } from "../../redux/themeSlice";
+import { TOGGLE_THEME, selectTheme } from "@/redux/slice/themeSlice";
+
 
 export const Theme = () => {
     //local reactive state

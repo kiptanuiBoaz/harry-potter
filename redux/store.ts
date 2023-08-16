@@ -3,12 +3,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import charactersSlice from "./slice/charactersSlice";
 import themeSlice from "./slice/themeSlice";
 import paginationSlice from "./slice/paginationSlice";
+import authSlice from "./slice/authSlice";
 
 export const store = configureStore({
     reducer: {
         characters: charactersSlice,
         theme: themeSlice,
         pagination: paginationSlice,
+        user:authSlice,
     },
     devTools: process.env.NODE_ENV !== "production",
 
@@ -18,8 +20,12 @@ export const store = configureStore({
 
 });
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+//persist state
+store.subscribe(() => {
+    localStorage.setItem("pagination", JSON.stringify(store.getState().pagination));
+    localStorage.setItem("theme", JSON.stringify(store.getState().theme));
+    localStorage.setItem("user", JSON.stringify(store.getState().user));
+  });
 
 
 // ambient declaration

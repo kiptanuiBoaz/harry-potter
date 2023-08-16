@@ -3,6 +3,15 @@ interface Character {
     dateOfBirth: string;
 }
 
+interface RootLayoutChildredInterface  {
+        children: React.ReactNode;
+      }
+
+
+interface AuthState {
+    user: string;
+}
+
 interface FilterPayload {
     search: string;
 }

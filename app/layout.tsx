@@ -16,16 +16,12 @@ export const metadata: Metadata = {
   description: 'Charcters from the Harry Potter Series',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({children}:RootLayoutChildredInterface) {
   return (
     <html lang="en">
       <body className={inter.className}>
         <Provider store={store}>
-          {/* <Navbar/> */}
+          <Navbar/>
           {children}
           <Footer />
         </Provider>
