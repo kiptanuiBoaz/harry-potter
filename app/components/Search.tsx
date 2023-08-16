@@ -15,7 +15,7 @@ const Search: React.FC = () => {
 
 
     return (
-        <div className={`relative rounded-full p-2 transition-all duration-300 ${isFocused ? 'bg-white' : 'bg-gray-200'}`}>
+        <div className={`relative rounded-full p-0 transition-all duration-300 ${isFocused ? 'bg-white' : 'bg-gray-200'}`}>
             <input
                 type="text"
                 value={searchText}

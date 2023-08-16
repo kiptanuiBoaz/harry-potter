@@ -35,8 +35,6 @@ export default function Home() {
   return isLoading ?<Spinner/>:(
 
     <main className="bg-gray-200 min-h-screen flex flex-col justify-center items-center">
-      <h1>This is tha app section</h1>
-      <Search/>
       <CharactersTable />
       <Pagination />
     </main>

@@ -1,41 +1,42 @@
+"use client"
 import './navbar.scss';
 import Cookies from 'js-cookie';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { UPDATE_EDITING_ID } from '../../redux/jokeSlice';
-import { selectTheme } from '../../redux/themeSlice';
-import { ActionBtn, DangerBtn, MobileMenu, Theme } from '..';
+import { useRouter } from 'next/navigation';
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai"
 import { useState } from 'react';
-import { RESET_USER } from '../../redux/authSlice';
+import { selectTheme } from '@/redux/slice/themeSlice';
+import { RESET_USER } from '@/redux/slice/authSlice';
+import { ActionBtn } from './ActionBtn';
+import { Theme } from './Theme';
+import { MobileMenu } from './MobileMenu';
+import { DangerBtn } from './DangerBtn';
+import Search from './Search';
 
 export const Navbar = () => {
   const [showMobileNav, setShowMobileNav] = useState<boolean>(false);
-  const token = import.meta.env.VITE_COOKIE_TOKEN;
+  const token = process.env.COOKIE_TOKEN;
 
   //redux store states
   const theme = useSelector(selectTheme);
 
   //navigation fns
-  const navigate = useNavigate();
+  const router = useRouter();
   const dispatch = useDispatch();
 
   //remove cookie 
   const logOut = () => {
     Cookies.remove(token);
     dispatch(RESET_USER());//remove user from redux
-    navigate("/login");
+    router.push("/login");
   }
 
-  //curent route
-  const location = useLocation();
 
 
   //handle click event
   const handleClick = () => {
-    dispatch(UPDATE_EDITING_ID("add"))
-    navigate(location.pathname === "/edit" ? "/" : "/edit");
+    router.push(router.pathname === "/edit" ? "/" : "/edit");
   }
 
 
@@ -57,13 +58,12 @@ export const Navbar = () => {
             onClick={() => setShowMobileNav(!showMobileNav)}
           />
       }
-
-
+      <Search />
 
       <div className={`nav-items ${showMobileNav && "mobile-nav"}`}>
 
         <div className="link-container">
-          <ActionBtn clickHandler={handleClick}>  {location.pathname !== "/edit" ? "Add New Joke" : "Back to Jokes"}</ActionBtn>
+          {/* <ActionBtn clickHandler={handleClick}>  {location.pathname !== "/edit" ? "Add New Joke" : "Back to Jokes"}</ActionBtn> */}
           <DangerBtn clickHandler={logOut}>Logout</DangerBtn>
         </div>
         <Theme />
