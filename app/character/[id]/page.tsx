@@ -1,7 +1,6 @@
 "use client"
 import { Spinner } from "@/app/components/Spinner";
 import { api } from "@/axios/axios";
-import { Loading } from "notiflix";
 import { useEffect, useState } from "react";
 import { InfoTable } from "./components/InfoTable";
 import { CharacterProps, HarryPotterCharacter } from "@/types";
