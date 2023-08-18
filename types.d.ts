@@ -3,10 +3,14 @@ interface Character {
     dateOfBirth: string;
 }
 
-interface RootLayoutChildredInterface  {
-        children: React.ReactNode;
-      }
+interface RootLayoutChildredInterface {
+    children: React.ReactNode;
+}
 
+interface DangerBtnPropTypes {
+    clickHandler: () => void,
+    children: string | string[];
+}
 
 interface AuthState {
     user: string;

@@ -5,6 +5,7 @@ import { NAVIGATE_PAGE, selectPagination } from '@/redux/slice/paginationSlice';
 import { ItemsPerPage } from './ItemsPerPage';
 import { selectFilterdCharacters } from '@/redux/slice/charactersSlice';
 import {GrNext,GrPrevious} from "react-icons/gr";
+import { selectTheme } from '@/redux/slice/themeSlice';
 
 
 
@@ -14,6 +15,7 @@ export const Pagination: React.FC = () => {
     const totalCharacters = useSelector(selectFilterdCharacters).length;
     // pagination state from redux store
     const { limit, page: currentPage } = useSelector(selectPagination);
+    const theme = useSelector(selectTheme)
 
     const dispatch = useDispatch();
 
@@ -21,7 +23,7 @@ export const Pagination: React.FC = () => {
     //page numbers to display
     const pageNumbers = Array.from({ length: pagesToShow }, (_, index) => currentPage - 1 + index);
     return (
-        <div className="pagination flex items-center justify-center space-x-5 m-5">
+        <div className={` ${theme === "dark" && "text-white"} pagination flex items-center justify-center space-x-5 m-5`}>
 
         {totalCharacters > limit && <ItemsPerPage />}
       

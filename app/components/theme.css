@@ -17,8 +17,8 @@
   
   #darkmode .label {
     border: #dddfe4 2px solid;
-    width: 30px;
-    height: 12px;
+    width: 40px;
+    height: 20px;
     background-color: #111;
     display: flex;
     border-radius: 50px;
@@ -36,11 +36,11 @@
     background-color: white;
     position: absolute;
     top: 0.3px;
-    left: 0.5px;
+    left: 0px;
     border-radius: 50%;
     transition: transform 0.2s linear;
   }
   
   #darkmode .checkbox:checked + .label .ball {
-    transform: translateX(24px);
+    transform: translateX(22px);
   }

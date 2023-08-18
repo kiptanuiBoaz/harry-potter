@@ -12,12 +12,16 @@
     .logo {
       font-size: 1.5rem;
       color: var(--secondary-color) !important;
+      @media only screen and (max-width: 720px) {
+        font-size: 1rem;
+      }
     }
   
     .menu-icon{
       cursor: pointer;
       background-color: var(--dark-accent-background-color);
       padding: 3px;
+      margin-left: 10px;
       &:hover{
         color: var(--secondary-color);
       }

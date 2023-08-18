@@ -1,7 +1,8 @@
+import { getDefautlTheme } from '@/lib/getDefaultTheme';
 import { createSlice } from '@reduxjs/toolkit';
 
 // Determine the initial theme based on system preferences
-const prefersDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const prefersDarkTheme = getDefautlTheme()
 
 const initialState: ThemeInterface = {
   theme: prefersDarkTheme ? 'dark' : 'light',

@@ -9,6 +9,7 @@ import { Footer } from './components/Footer';
 import { Navbar } from './components/Navbar';
 
 
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -17,9 +18,10 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({children}:RootLayoutChildredInterface) {
+
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} `}>
         <Provider store={store}>
           <Navbar/>
           {children}

@@ -1,14 +1,18 @@
+"use client"
 import Cookies from 'js-cookie';
 import { useDispatch } from 'react-redux';
 import "./mobile-menu.scss";
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { Theme } from './Theme';
 import { ActionBtn } from './ActionBtn';
 import { DangerBtn } from './DangerBtn';
+import { GrNext } from 'react-icons/gr';
 
 export const MobileMenu = () => {
     const router = useRouter();
     const dispatch = useDispatch();
+    const pathname = usePathname();
 
     const logOut = () => {
         Cookies.remove(token);
@@ -17,17 +21,15 @@ export const MobileMenu = () => {
 
     const token = process.env.COOKIE_TOKEN;
 
-
-
     //handle click event
     const handleClick = () => {
-        router.push(router.pathname === "/edit" ? "/" : "/edit");
+        router.push(pathname === "/edit" ? "/" : "/edit");
     }
 
     return (
         <div className='menu-items'>
             <Theme />
-            <ActionBtn clickHandler={handleClick}>  {router.pathname !== "/edit" ? "Add New Joke" : "Back to Jokes"}</ActionBtn>
+            {pathname.includes("/character") && <ActionBtn clickHandler={handleClick}> All Characters <GrNext color="white" /></ActionBtn>}
             <DangerBtn clickHandler={logOut}>Logout</DangerBtn>
         </div>
     )

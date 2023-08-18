@@ -2,17 +2,19 @@
 import { CharactersTable } from './components/CharactersTable'
 import { useEffect, useState } from 'react'
 import { api } from '@/axios/axios';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { SET_CHARACTERS } from '@/redux/slice/charactersSlice';
 import { Spinner } from './components/Spinner';
 import Search from './components/Search';
 import { Pagination } from './components/Pagination';
+import { selectTheme } from '@/redux/slice/themeSlice';
 
 const CHARACTERS_ROUTE = "/characters"
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const dispatch = useDispatch();
+  const theme = useSelector(selectTheme);
 
   useEffect(() => {
     //get all posts from API
@@ -34,7 +36,7 @@ export default function Home() {
 
   return isLoading ?<Spinner/>:(
 
-    <main className="bg-gray-200 min-h-screen flex flex-col justify-center items-center">
+    <main className= {`${ theme  === "light" ? "bg-gray-200" : "#17191d"} py-4  flex flex-col justify-center items-center`}>
       <CharactersTable />
       <Pagination />
     </main>
