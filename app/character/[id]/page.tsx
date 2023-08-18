@@ -14,7 +14,7 @@ const Character: React.FC<CharacterProps> = ({ params }) => {
   const [character, setCharacter] = useState<HarryPotterCharacter>();
 
   //character Id from  character id
-  const id: string = params.id;
+  const id: string = params?.id;
 
 
   useEffect(() => {

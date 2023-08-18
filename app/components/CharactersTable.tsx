@@ -1,5 +1,4 @@
 "use client"
-import { formatDate } from '@/app/lib/resolveDate';
 import { selectFilterdCharacters } from '@/redux/slice/charactersSlice';
 import { selectPagination } from '@/redux/slice/paginationSlice';
 import { selectTheme } from '@/redux/slice/themeSlice';
@@ -7,7 +6,20 @@ import { HarryPotterCharacter } from '@/types';
 import Link from 'next/link';
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { format, parse } from "date-fns";
 
+export const formatDate = (dateString: string) => {
+  const requiredFormat = "dd MMM yyyy";
+  const inputFormat = "dd-mm-yyyy"
+  try {
+      const parsedDate = parse(dateString, inputFormat, new Date());
+      return format(parsedDate, requiredFormat);
+  } catch (error) {
+      // Ignore parse errors for this format and continue to the next one
+  }
+
+  return "N/A";
+};
 
 export const CharactersTable: React.FC = () => {
   //characters from redux store

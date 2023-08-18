@@ -1,11 +1,22 @@
 "use client"
-import { getDefautlTheme } from '@/app/lib/getDefaultTheme';
 import { ThemeInterface } from '@/types';
 import { createSlice } from '@reduxjs/toolkit';
 
 // Determine the initial theme based on system preferences
-const prefersDarkTheme = getDefautlTheme()
 
+
+export const getDefautlTheme = () => {
+  if (typeof window !== 'undefined') {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark';
+      } else {
+          return 'light';
+      }
+  }
+
+
+}
+const prefersDarkTheme = getDefautlTheme()
 const initialState: ThemeInterface = {
   theme: prefersDarkTheme ? 'dark' : 'light',
 };
