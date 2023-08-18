@@ -1,3 +1,4 @@
+"use client"
 import { DangerBtnPropTypes } from "@/types";
 import "./action-btn.scss";
 

@@ -1,3 +1,4 @@
+"use client"
 import { FILTER_CHARACTERS } from '@/redux/slice/charactersSlice';
 import { selectTheme } from '@/redux/slice/themeSlice';
 import React, { useEffect, useState } from 'react';

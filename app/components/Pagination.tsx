@@ -1,3 +1,4 @@
+"use client"
 import React from 'react';
 import './pagination.scss';
 import { useSelector, useDispatch } from "react-redux";

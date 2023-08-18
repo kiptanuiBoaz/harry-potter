@@ -1,3 +1,4 @@
+"use client"
 import { UPDATE_ITEMS_PER_PAGE, selectPagination } from '@/redux/slice/paginationSlice';
 import { selectTheme } from '@/redux/slice/themeSlice';
 import { PagenationInterface } from '@/types';

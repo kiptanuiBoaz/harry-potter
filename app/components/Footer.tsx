@@ -1,3 +1,4 @@
+"use client"
 import { selectTheme } from '@/redux/slice/themeSlice';
 import React from 'react';
 

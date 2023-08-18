@@ -1,3 +1,4 @@
+"use client"
 import { formatDate } from '@/lib/resolveDate';
 import { selectFilterdCharacters } from '@/redux/slice/charactersSlice';
 import { selectPagination } from '@/redux/slice/paginationSlice';
