@@ -5,7 +5,6 @@ import { api } from '@/axios/axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { SET_CHARACTERS } from '@/redux/slice/charactersSlice';
 import { Spinner } from './components/Spinner';
-import Search from './components/Search';
 import { Pagination } from './components/Pagination';
 import { selectTheme } from '@/redux/slice/themeSlice';
 
