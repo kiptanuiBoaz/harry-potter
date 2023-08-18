@@ -1,5 +1,5 @@
 "use client"
-import { formatDate } from '@/lib/resolveDate';
+import { formatDate } from '@/app/lib/resolveDate';
 import { selectFilterdCharacters } from '@/redux/slice/charactersSlice';
 import { selectPagination } from '@/redux/slice/paginationSlice';
 import { selectTheme } from '@/redux/slice/themeSlice';

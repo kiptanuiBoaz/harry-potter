@@ -1,5 +1,5 @@
 "use client"
-import { getDefautlTheme } from '@/lib/getDefaultTheme';
+import { getDefautlTheme } from '@/app/lib/getDefaultTheme';
 import { ThemeInterface } from '@/types';
 import { createSlice } from '@reduxjs/toolkit';
 
