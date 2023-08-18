@@ -13,14 +13,17 @@ import { RootLayoutChildredInterface } from '@/types';
 const inter = Inter({ subsets: ['latin'] });
 
 
-export default function RootLayout({children}:RootLayoutChildredInterface) {
+export default function RootLayout({ children }: RootLayoutChildredInterface) {
 
   return (
     <html lang="en">
-      
+      <head>
+        <title>Harry Potter</title>
+        <meta name='description' content='Characters from the Harry Potter Series' />
+      </head>
       <body className={`${inter.className} `}>
         <Provider store={store}>
-          <Navbar/>
+          <Navbar />
           {children}
           <Footer />
         </Provider>

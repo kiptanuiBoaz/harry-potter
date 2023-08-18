@@ -22,7 +22,6 @@ const Character: React.FC<CharacterProps> = ({ params }) => {
       setIsLoading(true);
       try {
         const res = await api.get(`${CHARACTER_ROUTE}/${id}`);
-
         setCharacter(res.data[0]);
         setIsLoading(false);
       } catch (error) {
@@ -32,7 +31,7 @@ const Character: React.FC<CharacterProps> = ({ params }) => {
     };
     fetchPosts();
 
-  }, []);
+  }, [id]);
 
 
   if (isLoading) {
