@@ -2,19 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+
 @import url("https://fonts.googleapis.com/css2?family=Lora&family=Merriweather+Sans:wght@700&family=Montserrat:wght@500&family=Open+Sans:ital,wght@1,300&family=Poppins&display=swap");
 :root {
   --dark-primary-color: #fff;
@@ -38,4 +27,19 @@ html {
   font-family: var(--global-font-family) !important;
   margin:0;
   padding:0;
+}
+
+@media (prefers-color-scheme: dark) {
+  body{
+    background-color: var(--dark-primary-background-color)
+  }
+
+}
+
+.dark{
+  background-color: var(--dark-primary-background-color);
+}
+
+.light{
+  background-color: var(--light-primary-background-color);
 }

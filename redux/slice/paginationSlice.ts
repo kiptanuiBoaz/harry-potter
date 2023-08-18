@@ -4,7 +4,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 const initialState:PaginationStateInterface = {
     pagination: {
         page: 1,
-        limit: 10,
+        limit: 8,
     }
 };
 

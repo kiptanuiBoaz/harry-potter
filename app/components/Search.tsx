@@ -1,33 +1,36 @@
-import { FILTER_CHARACTERS, SET_CHARACTERS } from '@/redux/slice/charactersSlice';
+import { FILTER_CHARACTERS } from '@/redux/slice/charactersSlice';
+import { selectTheme } from '@/redux/slice/themeSlice';
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Search: React.FC = () => {
     const [searchText, setSearchText] = useState('');
     const [isFocused, setIsFocused] = useState(false);
+    const theme = useSelector(selectTheme);
 
     const dispatch = useDispatch();
 
-    //filter in redux store
+    // Filter in redux store
     useEffect(() => {
-        dispatch(FILTER_CHARACTERS({ search: searchText }))
-    }, [dispatch, searchText])
-
+        dispatch(FILTER_CHARACTERS({ search: searchText }));
+    }, [dispatch, searchText]);
 
     return (
-        <div className={`relative rounded-full p-0 transition-all duration-300 ${isFocused ? 'bg-white' : 'bg-gray-200'}`}>
+        <div className={`relative rounded-full p-0 transition-all duration-300 ${isFocused ? (theme === 'dark' ? 'bg-white' : 'bg-white') : (theme === 'dark' ? '#292f38' : '#e6e8ea')}`}>
             <input
                 type="text"
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}
-                className="w-full pl-8 pr-4 py-2 rounded-full outline-none focus:ring focus:ring-blue-300"
+                className={`w-full pl-6 pr-3 py-1 rounded-full outline-none focus:ring ${theme === 'dark' ? 'focus:ring-blue-300' : 'focus:ring-purple-300'} 
+                            sm:pl-5 sm:pr-3 sm:py-1.5 sm:text-sm md:pl-10 md:pr-5 md:py-2 md:text-base`}
                 placeholder="Search..."
+                style={{ color: 'black' }} 
             />
             {searchText && (
                 <button
-                    className="absolute top-1/2 right-4 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
+                    className={`absolute top-1/2 right-4 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none ${theme === 'dark' ? 'focus:text-blue-300' : 'focus:text-purple-300'}`}
                     onClick={() => setSearchText("")}
                 >
                     <svg

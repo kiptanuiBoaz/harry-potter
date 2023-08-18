@@ -2,7 +2,7 @@
 import './navbar.scss';
 import Cookies from 'js-cookie';
 import { useDispatch, useSelector } from 'react-redux';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai"
 import { useState } from 'react';
@@ -13,10 +13,12 @@ import { Theme } from './Theme';
 import { MobileMenu } from './MobileMenu';
 import { DangerBtn } from './DangerBtn';
 import Search from './Search';
+import { GrNext } from 'react-icons/gr';
 
 export const Navbar = () => {
   const [showMobileNav, setShowMobileNav] = useState<boolean>(false);
   const token = process.env.COOKIE_TOKEN;
+  const pathname = usePathname();
 
   //redux store states
   const theme = useSelector(selectTheme);
@@ -36,14 +38,17 @@ export const Navbar = () => {
 
   //handle click event
   const handleClick = () => {
-    router.push(router.pathname === "/edit" ? "/" : "/edit");
+    router.push("/");
   }
 
 
   return (
     <nav className={`navbar-container ${theme}-nav`}>
-      <h1 className='logo'>Jokes App</h1>
+      <h1 className='logo'>Harry Potter</h1>
       {/* display limit selectror when viewing table */}
+
+      {!pathname.includes("/character") && <Search />}
+
       {
         showMobileNav ?
           <AiOutlineClose
@@ -58,12 +63,10 @@ export const Navbar = () => {
             onClick={() => setShowMobileNav(!showMobileNav)}
           />
       }
-      <Search />
-
       <div className={`nav-items ${showMobileNav && "mobile-nav"}`}>
 
         <div className="link-container">
-          {/* <ActionBtn clickHandler={handleClick}>  {location.pathname !== "/edit" ? "Add New Joke" : "Back to Jokes"}</ActionBtn> */}
+          {pathname.includes("/character") && <ActionBtn clickHandler={handleClick}> All Characters <GrNext />      </ActionBtn>}
           <DangerBtn clickHandler={logOut}>Logout</DangerBtn>
         </div>
         <Theme />

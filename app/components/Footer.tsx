@@ -7,7 +7,7 @@ export const Footer = () => {
   const theme = useSelector(selectTheme);
   return (
     <footer className={`${theme}-footer flex flex-col items-center justify-center mt-5 py-3 bg-gray-800 text-white`}>
-      <p>
+      <p className="text-center text-xs sm:text-sm md:text-base lg:text-lg">
         jokesapp&copy;{new Date().getFullYear()} || developed by{' '}
         <a
           href="https://github.com/kiptanuiBoaz"
@@ -15,7 +15,7 @@ export const Footer = () => {
           rel="noopener noreferrer"
           className="underline"
         >
-          @kiptanuiBooaz
+          @kiptanuiBoaz
         </a>
       </p>
     </footer>
