@@ -4,7 +4,7 @@ import './login.scss';
 import { v4 } from "uuid";
 import { useDispatch } from 'react-redux';
 import { UPDATE_USER } from '@/redux/slice/authSlice';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation'
 
 const LoginForm: React.FC = () => {
     const [email, setEmail] = useState('prefilled@gmail.com');
