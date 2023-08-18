@@ -7,8 +7,10 @@ import Link from 'next/link';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { format, parse } from "date-fns";
+import { useRouter } from 'next/navigation'
 
 export const formatDate = (dateString: string) => {
+
   const requiredFormat = "dd MMM yyyy";
   const inputFormat = "dd-mm-yyyy"
   try {
@@ -26,6 +28,7 @@ export const CharactersTable: React.FC = () => {
   const filteredCharacters: HarryPotterCharacter[] = useSelector(selectFilterdCharacters);
   const { limit, page: currentPage } = useSelector(selectPagination);
   const theme = useSelector(selectTheme);
+  const router = useRouter();
 
   //for pagination
   const from = currentPage * limit;
@@ -56,7 +59,7 @@ export const CharactersTable: React.FC = () => {
                   } ${theme === 'dark' ? 'text-white' : 'text-black'}`}
               >
                 <td className={`border hover:underline px-2 sm:px-4 py-0 sm:py-3 text-sm sm:text-base leading-5 ${theme === 'dark' ? 'border-gray-700' : 'border-gray-300'}`}>
-                  <Link href={`character/${id}`}>{name}</Link>
+                  <p onClick={()=>router.push(`character/${id}`)}>{name}</p>
                 </td>
                 <td className={`border px-2 sm:px-4 py-2 sm:py-3 text-sm sm:text-base leading-5 ${theme === 'dark' ? 'border-gray-700' : 'border-gray-300'}`}>
                   {formatDate(dateOfBirth)}
