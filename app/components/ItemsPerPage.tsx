@@ -1,5 +1,6 @@
 import { UPDATE_ITEMS_PER_PAGE, selectPagination } from '@/redux/slice/paginationSlice';
 import { selectTheme } from '@/redux/slice/themeSlice';
+import { PagenationInterface } from '@/types';
 import { useDispatch, useSelector } from 'react-redux';
 
 export const ItemsPerPage = () => {

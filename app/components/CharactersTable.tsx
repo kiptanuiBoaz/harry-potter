@@ -2,6 +2,7 @@ import { formatDate } from '@/lib/resolveDate';
 import { selectFilterdCharacters } from '@/redux/slice/charactersSlice';
 import { selectPagination } from '@/redux/slice/paginationSlice';
 import { selectTheme } from '@/redux/slice/themeSlice';
+import { HarryPotterCharacter } from '@/types';
 import Link from 'next/link';
 import React from 'react';
 import { useSelector } from 'react-redux';

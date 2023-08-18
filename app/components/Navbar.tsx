@@ -29,7 +29,11 @@ export const Navbar = () => {
 
   //remove cookie 
   const logOut = () => {
-    Cookies.remove(token);
+    if (token) {
+      Cookies.remove(token);
+      dispatch(RESET_USER()); // remove user from redux
+      router.push("/login");
+    }
     dispatch(RESET_USER());//remove user from redux
     router.push("/login");
   }

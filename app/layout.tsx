@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { store } from '@/redux/store';
 import { Footer } from './components/Footer';
 import { Navbar } from './components/Navbar';
+import { RootLayoutChildredInterface } from '@/types';
 
 
 

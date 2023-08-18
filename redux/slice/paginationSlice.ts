@@ -1,3 +1,4 @@
+import { ItemsPerPagePayloadInterface, PaginationPayloadInterface, PaginationStateInterface } from '@/types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 
@@ -8,7 +9,7 @@ const initialState:PaginationStateInterface = {
     }
 };
 
-const paginationSlice = createSlice({
+const paginationSlice:any = createSlice({
     name: "pagination",
     initialState,
     reducers: {

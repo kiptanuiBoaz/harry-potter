@@ -1,3 +1,4 @@
+import { DangerBtnPropTypes } from "@/types";
 import "./danger-btn.scss";
 
 export const DangerBtn = ({ children, clickHandler }: DangerBtnPropTypes) => {

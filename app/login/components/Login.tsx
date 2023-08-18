@@ -4,8 +4,7 @@ import './login.scss';
 import { v4 } from "uuid";
 import { useDispatch } from 'react-redux';
 import { UPDATE_USER } from '@/redux/slice/authSlice';
-import { useRouter } from 'next/navigation'
-
+import { useRouter } from 'next/router';
 
 const LoginForm: React.FC = () => {
     const [email, setEmail] = useState('prefilled@gmail.com');
@@ -60,7 +59,7 @@ const LoginForm: React.FC = () => {
                 <button
                     onClick={(e: React.FormEvent) => {
                         e.preventDefault();
-                        setCookie(token, v4(), 7);
+                        setCookie(token ?? "", v4(), 7);
                     }}
                     type="submit"
                 >

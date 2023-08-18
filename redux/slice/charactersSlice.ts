@@ -1,4 +1,5 @@
 "use client"
+import { AllFilterdCharactersType, FilterPayload, HarryPotterCharacter } from '@/types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState = {

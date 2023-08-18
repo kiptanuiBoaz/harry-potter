@@ -1,4 +1,5 @@
 import { getDefautlTheme } from '@/lib/getDefaultTheme';
+import { ThemeInterface } from '@/types';
 import { createSlice } from '@reduxjs/toolkit';
 
 // Determine the initial theme based on system preferences

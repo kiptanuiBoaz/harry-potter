@@ -1,3 +1,5 @@
+import { AnyARecord } from "dns";
+
 interface Character {
     name: string;
     dateOfBirth: string;
@@ -9,7 +11,7 @@ interface RootLayoutChildredInterface {
 
 interface DangerBtnPropTypes {
     clickHandler: () => void,
-    children: string | string[];
+    children:any;
 }
 
 interface AuthState {

@@ -15,8 +15,10 @@ export const MobileMenu = () => {
     const pathname = usePathname();
 
     const logOut = () => {
-        Cookies.remove(token);
-        router.push("/login");
+        if (token) {
+            Cookies.remove(token);
+            router.push("/login");
+        }
     }
 
     const token = process.env.COOKIE_TOKEN;
@@ -29,7 +31,7 @@ export const MobileMenu = () => {
     return (
         <div className='menu-items'>
             <Theme />
-            {pathname.includes("/character") && <ActionBtn clickHandler={handleClick}> All Characters <GrNext color="white" /></ActionBtn>}
+            {pathname.includes("/character") && <ActionBtn clickHandler={handleClick}> All Characters <GrNext/></ActionBtn>}
             <DangerBtn clickHandler={logOut}>Logout</DangerBtn>
         </div>
     )
