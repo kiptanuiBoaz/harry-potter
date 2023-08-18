@@ -12,10 +12,7 @@ import { RootLayoutChildredInterface } from '@/types';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export const metadata: Metadata = {
-  title: 'Harry Potter',
-  description: 'Charcters from the Harry Potter Series',
-}
+
 
 export default function RootLayout({children}:RootLayoutChildredInterface) {
 

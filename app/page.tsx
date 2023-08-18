@@ -7,8 +7,14 @@ import { SET_CHARACTERS } from '@/redux/slice/charactersSlice';
 import { Spinner } from './components/Spinner';
 import { Pagination } from './components/Pagination';
 import { selectTheme } from '@/redux/slice/themeSlice';
+import { Metadata } from 'next';
 
 const CHARACTERS_ROUTE = "/characters"
+
+export const metadata: Metadata = {
+  title: 'Harry Potter',
+  description: 'Charcters from the Harry Potter Series',
+}
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
