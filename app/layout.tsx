@@ -13,11 +13,11 @@ import { RootLayoutChildredInterface } from '@/types';
 const inter = Inter({ subsets: ['latin'] });
 
 
-
 export default function RootLayout({children}:RootLayoutChildredInterface) {
 
   return (
     <html lang="en">
+      
       <body className={`${inter.className} `}>
         <Provider store={store}>
           <Navbar/>
