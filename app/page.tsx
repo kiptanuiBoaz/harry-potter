@@ -22,8 +22,11 @@ export default function Home() {
   const cookies = new Cookies();
   let token: string | undefined = "";
   token = process.env.NEXT_PUBLIC_COOKIE_TOKEN;
+  let tokenCookie: string | undefined;
+  if (token) {
+    tokenCookie = cookies.get(token);
+  }
 
-  const tokenCookie = cookies.get(token);
 
   // If the cookie is not present, redirect to the login page
 
