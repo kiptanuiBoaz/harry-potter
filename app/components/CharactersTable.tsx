@@ -12,10 +12,10 @@ export const formatDate = (dateString: string) => {
   const requiredFormat = "dd MMM yyyy";
   const inputFormat = "dd-mm-yyyy"
   try {
-      const parsedDate = parse(dateString, inputFormat, new Date());
-      return format(parsedDate, requiredFormat);
+    const parsedDate = parse(dateString, inputFormat, new Date());
+    return format(parsedDate, requiredFormat);
   } catch (error) {
-      // Ignore parse errors for this format and continue to the next one
+    // Ignore parse errors for this format and continue to the next one
   }
 
   return "N/A";
@@ -47,12 +47,12 @@ export const CharactersTable: React.FC = () => {
               <tr
                 key={index}
                 className={`${theme === 'dark'
-                    ? index % 2 === 0
-                      ? 'bg-gray-900'
-                      : 'bg-gray-800'
-                    : index % 2 === 0
-                      ? 'bg-gray-100'
-                      : ''
+                  ? index % 2 === 0
+                    ? 'bg-gray-900'
+                    : 'bg-gray-800'
+                  : index % 2 === 0
+                    ? 'bg-gray-100'
+                    : ''
                   } ${theme === 'dark' ? 'text-white' : 'text-black'}`}
               >
                 <td className={`border hover:underline px-2 sm:px-4 py-0 sm:py-3 text-sm sm:text-base leading-5 ${theme === 'dark' ? 'border-gray-700' : 'border-gray-300'}`}>
