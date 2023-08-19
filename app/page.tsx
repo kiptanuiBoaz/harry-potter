@@ -27,10 +27,7 @@ export default function Home() {
     tokenCookie = cookies.get(token);
   }
 
-
   // If the cookie is not present, redirect to the login page
-
-
   useEffect(() => {
     const checkCookiePresence = () => {
       if (!tokenCookie) {

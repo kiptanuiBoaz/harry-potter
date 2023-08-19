@@ -35,7 +35,7 @@ export const MobileMenu = () => {
     return (
         <div className='menu-items'>
             <Theme />
-            {pathname === ("/character") && <ActionBtn clickHandler={handleClick}> All Characters <GrNext /></ActionBtn>}
+            {pathname !== ("/") &&  pathname !== "/login" && <ActionBtn clickHandler={handleClick}> All Characters <GrNext />      </ActionBtn>}
             {pathname !== ("/login") && <DangerBtn clickHandler={logOut}>Logout</DangerBtn>}
         </div>
     )

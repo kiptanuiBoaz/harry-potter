@@ -1,5 +1,5 @@
 "use client"
-import { AllFilterdCharactersType, FilterPayload, HarryPotterCharacter } from '@/types';
+import { AllCharactersType, AllFilterdCharactersType, FilterPayload, HarryPotterCharacter } from '@/types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -35,5 +35,6 @@ const charactersSlice = createSlice({
 
 
 export const { SET_CHARACTERS,  FILTER_CHARACTERS,   RESET_FILTERED } = charactersSlice.actions;
-export const selectFilterdCharacters = (state: { characters: AllFilterdCharactersType }) => state.characters.filteredCharacters
+export const selectFilterdCharacters = (state: { characters: AllFilterdCharactersType }) => state.characters.filteredCharacters;
+export const selectAllCharacters = (state: { characters:AllCharactersType }) => state.characters.characters;
 export default charactersSlice.reducer;
