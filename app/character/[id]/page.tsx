@@ -15,6 +15,7 @@ const Character: React.FC<CharacterProps> = ({ params }) => {
   //character Id from  character id
   const id: string = params?.id;
 
+  console.log(params)
 
   useEffect(() => {
     //get all posts from API

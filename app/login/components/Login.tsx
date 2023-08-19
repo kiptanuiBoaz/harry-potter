@@ -10,7 +10,7 @@ const LoginForm: React.FC = () => {
     const [email, setEmail] = useState('prefilled@gmail.com');
     const [password, setPassword] = useState('pReFiLl@123');
     let token: string | undefined = "";
-    token = process.env.COOKIE_TOKEN;
+    token = process.env.NEXT_PUBLIC_COOKIE_TOKEN;
 
     const router = useRouter();
     const dispatch = useDispatch();

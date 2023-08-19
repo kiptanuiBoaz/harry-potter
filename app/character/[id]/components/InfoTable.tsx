@@ -10,7 +10,7 @@ export const InfoTable = ({ character, characterInfoArray }: any) => {
   const theme = useSelector(selectTheme);
   //destructure object into array 
   const { name, gender, image } = character;
-  console.log(theme)
+
   return (
     <div className={`${theme === "light" ? "bg-gray-200" : "bg-#17191d"} flex flex-col lg:flex-row md:px-40 sm:px-20 px-4`}>
       <div className="lg:w-1/2 p-0 sm:p-2 md:p-4">

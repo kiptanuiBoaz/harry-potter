@@ -8,31 +8,35 @@ import { Theme } from './Theme';
 import { ActionBtn } from './ActionBtn';
 import { DangerBtn } from './DangerBtn';
 import { GrNext } from 'react-icons/gr';
+import { RESET_USER } from '@/redux/slice/authSlice';
 
 export const MobileMenu = () => {
     const router = useRouter();
     const dispatch = useDispatch();
     const pathname = usePathname();
 
+    let token: string | undefined = "";
+    token = process.env.NEXT_PUBLIC_COOKIE_TOKEN;
+
     const logOut = () => {
         if (token) {
             Cookies.remove(token);
+            dispatch(RESET_USER()); // remove user from redux
             router.push("/login");
-        }
+        };
     }
 
-    const token = process.env.COOKIE_TOKEN;
 
     //handle click event
     const handleClick = () => {
-        router.push(pathname === "/edit" ? "/" : "/edit");
+        router.push("/");
     }
 
     return (
         <div className='menu-items'>
             <Theme />
-            {pathname.includes("/character") && <ActionBtn clickHandler={handleClick}> All Characters <GrNext/></ActionBtn>}
-            <DangerBtn clickHandler={logOut}>Logout</DangerBtn>
+            {pathname === ("/character") && <ActionBtn clickHandler={handleClick}> All Characters <GrNext /></ActionBtn>}
+            {pathname !== ("/login") && <DangerBtn clickHandler={logOut}>Logout</DangerBtn>}
         </div>
     )
 }

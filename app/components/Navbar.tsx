@@ -17,7 +17,7 @@ import { GrNext } from 'react-icons/gr';
 
 export const Navbar = () => {
   const [showMobileNav, setShowMobileNav] = useState<boolean>(false);
-  const token = process.env.COOKIE_TOKEN;
+  const token = process.env.NEXT_PUBLIC_COOKIE_TOKEN;
   const pathname = usePathname();
 
   //redux store states
@@ -33,11 +33,8 @@ export const Navbar = () => {
       Cookies.remove(token);
       dispatch(RESET_USER()); // remove user from redux
       router.push("/login");
-    }
-    dispatch(RESET_USER());//remove user from redux
-    router.push("/login");
+    };
   }
-
 
 
   //handle click event
@@ -51,7 +48,7 @@ export const Navbar = () => {
       <h1 className='logo'>Harry Potter</h1>
       {/* display limit selectror when viewing table */}
 
-      {!pathname.includes("/character") && <Search />}
+      {pathname ==="/" && <Search />}
 
       {
         showMobileNav ?
@@ -70,8 +67,8 @@ export const Navbar = () => {
       <div className={`nav-items ${showMobileNav && "mobile-nav"}`}>
 
         <div className="link-container">
-          {pathname.includes("/character") && <ActionBtn clickHandler={handleClick}> All Characters <GrNext />      </ActionBtn>}
-          <DangerBtn clickHandler={logOut}>Logout</DangerBtn>
+          {pathname !== ("/") &&  pathname !== "/login" && <ActionBtn clickHandler={handleClick}> All Characters <GrNext />      </ActionBtn>}
+          {pathname !== ("/login")  && <DangerBtn clickHandler={logOut}>Logout</DangerBtn>}
         </div>
         <Theme />
       </div>
